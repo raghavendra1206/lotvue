@@ -1,0 +1,4 @@
+<%if @errors.present? %>
+	alert('error on creating role')
+<% end %>
+$(".user-info-list").html("<%= escape_javascript(render 'form_user_info') %>");

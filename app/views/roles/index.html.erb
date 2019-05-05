@@ -1,0 +1,33 @@
+<%= form_with(model: @role, remote: true) do |form| %>
+  <div class="form-row align-items-center">
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInputGroup">Role Name</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">role</div>
+        </div>
+        <%= form.text_field :name, class: "form-control",id: "inlineFormInputGroup" %>
+        <!-- <input type="text" class="form-control" id="" placeholder="Username"> -->
+      </div>
+    </div>
+    <div class="col-auto">
+      <div class="form-check mb-2">
+        <%= form.check_box :is_default, checked: @role.is_default %>
+        <!-- <input class="form-check-input" type="checkbox" id="autoSizingCheck"> -->
+        <label class="form-check-label" for="autoSizingCheck">
+          Is Active
+        </label>
+      </div>
+    </div>
+    <div class="col-auto">
+      <%= form.submit class:"btn btn-primary mb-2"%> 
+    </div>
+  </div>
+<%end%>
+
+<div class="role-list">
+  <%=render 'form' %>
+</div>
+
+
+

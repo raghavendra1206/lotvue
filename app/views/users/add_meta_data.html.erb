@@ -1,0 +1,35 @@
+<%= form_with(url:create_meta_data_path, model: @user_info, remote: true) do |form| %>
+  <div class="form-row align-items-center">
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInputGroup">Meta Data</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">Data Type</div>
+        </div>
+        <%= form.text_field :data_type, class: "form-control",id: "inlineFormInputGroup" %>
+        <!-- <input type="text" class="form-control" id="" placeholder="Username"> -->
+      </div>
+    </div>
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInputGroup">Value</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">Value</div>
+        </div>
+        <%= form.text_field :value, class: "form-control",id: "inlineFormInputGroup" %>
+        <!-- <input type="text" class="form-control" id="" placeholder="Username"> -->
+      </div>
+      <%= form.hidden_field :user_id, :value => @user.id %>
+    </div>
+    <div class="col-auto">
+      <%= form.submit class:"btn btn-primary mb-2"%> 
+    </div>
+  </div>
+<%end%>
+
+<div class="user-info-list">
+  <%=render 'form_user_info' %>
+</div>
+
+
+

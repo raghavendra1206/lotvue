@@ -1,0 +1,39 @@
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope='col'>Role</th>
+      <th scope="col">image</th>
+      <th scope='col'>Meta Data</th>
+      <th scope='col'>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each_with_index do |user,index| %>
+      <tr>
+        <td scope="row"><%= index+1%></td>
+        <td><%= best_in_place user, :first_name, :as => :input %></td>
+        <td><%= best_in_place user, :last_name, :as => :input %></td>
+        <td><%= best_in_place user, :email, :as => :input %></td>
+        <td> 
+          <%= best_in_place user, :role_id, :as => :select, :collection => Role.active_roles %>
+        </td>
+        <td><%= image_tag url_for(user.photos) if @user.photos.attached? %></td>
+        <td><%= link_to "Meta Data", add_meta_data_path(:id => user.id) %></td>
+        <td>
+          <%= link_to 'Destroy', user, method: :delete,remote:true, data: { confirm: 'Are you sure?' } %>      
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(".best_in_place").best_in_place();
+  });
+</script>
